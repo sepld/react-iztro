@@ -1,5 +1,12 @@
 export default {
     "titleBasicInfo": "Basic Information",
+    "labelAlgorithm": "Algorithm",
+    "algorithmDefault": "Default",
+    "algorithmZhongzhou": "Zhongzhou",
+    "labelAstroType": "Astrolabe Type",
+    "astroTypeHeaven": "Heaven",
+    "astroTypeEarth": "Earth",
+    "astroTypeHuman": "Human",
     "labelElementType": "Five Element",
     "labelNominalAge": "Age (Nominal)",
     "age": "{{age}} years old",

@@ -1,6 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Izpalace } from "../Izpalace/Izpalace";
-import { IztrolabeProps } from "./Iztrolabe.type";
+import type {
+  Algorithm,
+  AstroType,
+  IztrolabeProps,
+} from "./Iztrolabe.type";
 import { IzpalaceCenter } from "../IzpalaceCenter";
 import classNames from "classnames";
 import { useIztro } from "iztro-hook";
@@ -11,7 +15,42 @@ import { HeavenlyStemKey } from "iztro/lib/i18n";
 import { getPalaceNames } from "iztro/lib/astro";
 import "../locales"
 
+type IztrolabeContentProps = Omit<IztrolabeProps, "astroType"> & {
+  algorithm: Algorithm;
+  astroType: AstroType;
+  setAlgorithm: React.Dispatch<React.SetStateAction<Algorithm>>;
+  setAstroType: React.Dispatch<React.SetStateAction<AstroType>>;
+};
+
 export const Iztrolabe: React.FC<IztrolabeProps> = (props) => {
+  const [algorithm, setAlgorithm] = useState<Algorithm>(
+    props.options?.algorithm ?? "default"
+  );
+  const [astroType, setAstroType] = useState<AstroType>(
+    props.astroType ?? "heaven"
+  );
+
+  useEffect(() => {
+    setAlgorithm(props.options?.algorithm ?? "default");
+  }, [props.options?.algorithm]);
+
+  useEffect(() => {
+    setAstroType(props.astroType ?? "heaven");
+  }, [props.astroType]);
+
+  return (
+    <IztrolabeContent
+      key={algorithm}
+      {...props}
+      algorithm={algorithm}
+      astroType={astroType}
+      setAlgorithm={setAlgorithm}
+      setAstroType={setAstroType}
+    />
+  );
+};
+
+const IztrolabeContent: React.FC<IztrolabeContentProps> = (props) => {
   const [taichiPoint, setTaichiPoint] = useState(-1);
   const [taichiPalaces, setTaichiPalaces] = useState<undefined | string[]>();
   const [activeHeavenlyStem, setActiveHeavenlyStem] =
@@ -33,8 +72,11 @@ export const Iztrolabe: React.FC<IztrolabeProps> = (props) => {
     fixLeap: props.fixLeap,
     isLeapMonth: props.isLeapMonth,
     lang: props.lang,
-    astroType: props.astroType,
-    options: props.options,
+    astroType: props.algorithm === "default" ? "heaven" : props.astroType,
+    options: {
+      ...props.options,
+      algorithm: props.algorithm,
+    },
   });
   useEffect(() => {
     // i18next.addResources()
@@ -168,6 +210,10 @@ export const Iztrolabe: React.FC<IztrolabeProps> = (props) => {
         setHoroscopeHour={setHoroscopeHour}
         centerPalaceAlign={props.centerPalaceAlign}
         lang={props.lang ?? "zh-CN"}
+        algorithm={props.algorithm}
+        astroType={props.astroType}
+        setAlgorithm={props.setAlgorithm}
+        setAstroType={props.setAstroType}
         {...dynamic}
       />
     </div>

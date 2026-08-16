@@ -1,5 +1,12 @@
 export default {
     "titleBasicInfo": "基本信息",
+    "labelAlgorithm": "安星算法",
+    "algorithmDefault": "通行版",
+    "algorithmZhongzhou": "中州派",
+    "labelAstroType": "排盘类型",
+    "astroTypeHeaven": "天盘",
+    "astroTypeEarth": "地盘",
+    "astroTypeHuman": "人盘",
     "labelElementType": "五行局",
     "labelNominalAge": "年龄(虚岁)",
     "age": "{{age}} 岁",

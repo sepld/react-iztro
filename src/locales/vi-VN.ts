@@ -1,5 +1,12 @@
 export default {
     "titleBasicInfo": "Thông tin cơ bản",
+    "labelAlgorithm": "Phương pháp an sao",
+    "algorithmDefault": "Mặc định",
+    "algorithmZhongzhou": "Trung Châu phái",
+    "labelAstroType": "Loại lá số",
+    "astroTypeHeaven": "Thiên bàn",
+    "astroTypeEarth": "Địa bàn",
+    "astroTypeHuman": "Nhân bàn",
     "labelElementType": "Ngũ hành cục",
     "labelNominalAge": "Tuổi mụ",
     "age": "{{age}} tuổi",

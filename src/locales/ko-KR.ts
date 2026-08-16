@@ -1,5 +1,12 @@
 export default {
     "titleBasicInfo": "기본 정보",
+    "labelAlgorithm": "배성 알고리즘",
+    "algorithmDefault": "기본",
+    "algorithmZhongzhou": "중주파",
+    "labelAstroType": "명반 유형",
+    "astroTypeHeaven": "천반",
+    "astroTypeEarth": "지반",
+    "astroTypeHuman": "인반",
     "labelElementType": "오행국",
     "labelNominalAge": "나이(세는 나이)",
     "age": "{{age}}세",

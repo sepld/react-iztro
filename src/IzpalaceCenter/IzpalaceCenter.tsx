@@ -11,6 +11,7 @@ import { normalizeDateStr, solar2lunar } from "lunar-lite";
 import i18next, { GenderName, kot, t } from "iztro/lib/i18n";
 import { CHINESE_TIME } from "iztro/lib/data";
 import { toLocaleLunarStr } from "../locales";
+import type { Algorithm, AstroType } from "../Iztrolabe/Iztrolabe.type";
 
 type IzpalaceCenterProps = {
   astrolabe?: FunctionalAstrolabe;
@@ -25,6 +26,10 @@ type IzpalaceCenterProps = {
   setHoroscopeHour?: React.Dispatch<React.SetStateAction<number | undefined>>;
   centerPalaceAlign?: boolean;
   lang: Language;
+  algorithm: Algorithm;
+  astroType: AstroType;
+  setAlgorithm: React.Dispatch<React.SetStateAction<Algorithm>>;
+  setAstroType: React.Dispatch<React.SetStateAction<AstroType>>;
 };
 
 export const IzpalaceCenter = ({
@@ -38,6 +43,10 @@ export const IzpalaceCenter = ({
   setHoroscopeHour,
   centerPalaceAlign,
   lang,
+  algorithm,
+  astroType,
+  setAlgorithm,
+  setAstroType,
 }: IzpalaceCenterProps) => {
   const records: ItemProps[] = useMemo(
     () => [
@@ -220,6 +229,45 @@ export const IzpalaceCenter = ({
         </span>
         <span>{i18next.t("react:titleBasicInfo")}</span>
       </h3>
+      <div className="astrolabe-selectors">
+        <label>
+          <span>{i18next.t("react:labelAlgorithm")}</span>
+          <select
+            value={algorithm}
+            onChange={(event) =>
+              setAlgorithm(event.target.value as Algorithm)
+            }
+          >
+            <option value="default">
+              {i18next.t("react:algorithmDefault")}
+            </option>
+            <option value="zhongzhou">
+              {i18next.t("react:algorithmZhongzhou")}
+            </option>
+          </select>
+        </label>
+        {algorithm !== "default" && (
+          <label>
+            <span>{i18next.t("react:labelAstroType")}</span>
+            <select
+              value={astroType}
+              onChange={(event) =>
+                setAstroType(event.target.value as AstroType)
+              }
+            >
+              <option value="heaven">
+                {i18next.t("react:astroTypeHeaven")}
+              </option>
+              <option value="earth">
+                {i18next.t("react:astroTypeEarth")}
+              </option>
+              <option value="human">
+                {i18next.t("react:astroTypeHuman")}
+              </option>
+            </select>
+          </label>
+        )}
+      </div>
       <ul className="basic-info">
         {records.map((rec, idx) => (
           <Item key={idx} {...rec} />
