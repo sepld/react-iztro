@@ -61,7 +61,7 @@ const IztrolabeContent: React.FC<IztrolabeContentProps> = (props) => {
   const [showYearly, setShowYearly] = useState(false);
   const [showMonthly, setShowMonthly] = useState(false);
   const [showDaily, setShowDaily] = useState(false);
-  const [showHourly, setShowShowHourly] = useState(false);
+  const [showHourly, setShowHourly] = useState(false);
   const [horoscopeDate, setHoroscopeDate] = useState<string | Date>();
   const [horoscopeHour, setHoroscopeHour] = useState<number>();
   const { astrolabe, horoscope, setHoroscope } = useIztro({
@@ -97,7 +97,7 @@ const IztrolabeContent: React.FC<IztrolabeContentProps> = (props) => {
         setShowDaily(!showDaily);
         break;
       case "hourly":
-        setShowShowHourly(!showHourly);
+        setShowHourly(!showHourly);
         break;
     }
   };
