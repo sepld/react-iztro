@@ -78,9 +78,6 @@ const IztrolabeContent: React.FC<IztrolabeContentProps> = (props) => {
       algorithm: props.algorithm,
     },
   });
-  useEffect(() => {
-    // i18next.addResources()
-  }, [])
 
   const toggleShowScope = (scope: Scope) => {
     switch (scope) {
